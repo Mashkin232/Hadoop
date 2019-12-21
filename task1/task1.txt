@@ -1,0 +1,32 @@
+>>>time python3 job.py data/wiki/wiki.txt -o result_local
+
+real	2m33.385s
+user	2m26.420s
+sys	    0m3.570s
+
+
+>>>time python3 job.py -r hadoop hdfs:///user/root/wiki.txt -o hdfs:///user/root/result_hadoop
+
+real    2m25.362s
+user    0m40.212s
+sys     0m2.160s
+
+
+>>>time python3 job.py data/wiki_trunc.txt -o result_local
+
+real	0m5.525s
+user	0m5.042s
+sys 	0m0.212s
+
+
+>>>time python3 job.py -r hadoop hdfs:///user/root/wiki_trunc.txt -o hdfs:///user/root/result_hadoop_trunc
+
+real	0m49.325s
+user	0m25.122s
+sys	    0m2.528s
+
+Hadoop стоит использовать с большими данными,
+на маленьких он тратит много времени на накладные расходы.
+Но время работы зависит он настроек локальной машины, 
+так на одной из машин hadoop у меня на больших данных работал больше 30m (это только map), а потом зависал.
+На другой машине он показал нормальные результаты(приведены выше)
